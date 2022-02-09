@@ -7,21 +7,22 @@ def get_formatted_time(time):
 
 def main():
 	print('Type the path from here you want to sum the duration of mp3 files:')
-	
-	path = str(input())
 
-	files = os.listdir(path)
+	try:
+		path = str(input())
+		files = os.listdir(path)
 
-	total_files_time = 0 
+		total_files_time = 0
 
-	for f in files:
-		if f.endswith('.mp3'):
-			filePath = path + '/' + f
-			audio = MP3(filePath)
-			length = audio.info.length
-			total_files_time += length
+		for f in files:
+			if f.endswith('.mp3'):
+				filePath = path + '/' + f
+				audio = MP3(filePath)
+				length = audio.info.length
+				total_files_time += length
 
-	print("This folder has " + get_formatted_time(total_files_time) + " of music!" )
-
+		print("This folder has " + get_formatted_time(total_files_time) + " of music!" )
+	except:
+		print('Something went wrong. Check the path or files.')
 
 main()
