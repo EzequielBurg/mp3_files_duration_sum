@@ -1,11 +1,13 @@
 import os
-from mutagen.mp3 import MP3
 import datetime
+from mutagen.mp3 import MP3
 
 def get_formatted_time(time):
 	return str(datetime.timedelta(seconds=time)).split('.')[0]
 
 def main():
+	print('Type the path from here you want to sum the duration of mp3 files:')
+	
 	path = str(input())
 
 	files = os.listdir(path)
@@ -21,7 +23,5 @@ def main():
 
 	print("This folder has " + get_formatted_time(total_files_time) + " of music!" )
 
-
-print('Type the path from here you want to sum the duration of mp3 files:')
 
 main()
